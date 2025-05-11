@@ -1,0 +1,48 @@
+name: Package & Publish
+
+on:
+  push:
+    branches: ["main", "master"]
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read .nvmrc version
+        id: nvmrc
+        run: |
+          NODE_VERSION=$(cat .nvmrc | sed 's/v//')  # Remove 'v' prefix if present
+          echo "node_version=${NODE_VERSION}" >> $GITHUB_OUTPUT
+          echo "Using Node.js version: ${NODE_VERSION}"
+
+      - name: Setup Node.js from .nvmrc
+        uses: actions/setup-node@v4
+        with:
+          node-version: "${{ steps.nvmrc.outputs.node_version }}"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: |
+          npm i
+          npm ci --prefer-offline --no-audit
+
+      # - name: Run tests
+      #   run: npm test
+      #   env:
+      #     CI: true
+      #     NODE_ENV: test
+
+      # - name: Run linter
+      #   run: npm run lint
+      #   env:
+      #     CI: true
+
+      - name: Publish to NPM
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

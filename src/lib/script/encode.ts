@@ -52,7 +52,11 @@ export function encodeWord (
   let buff = new Uint8Array()
 
   if (typeof (word) === 'string') {
-    if (word.startsWith('OP_')) {
+    // OB fork: OP_PUSHBYTES_1 01 should produce 0x01 to avoid inscription being cursed! 
+    // and not OP_1 (0x51) which is current behavior
+    if (word.startsWith('OP_PUSHBYTES_1')) {
+      buff = Buff.hex(word.split(' ')[1])
+    } else if (word.startsWith('OP_')) {
       // If word is an opcode, return a
       // number value without size prefix.
       return Buff.num(getOpCode(word), 1)
