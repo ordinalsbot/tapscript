@@ -56,6 +56,7 @@ export function encodeWord (
     // and not OP_1 (0x51) which is current behavior
     if (word.startsWith('OP_PUSHBYTES_1')) {
       buff = Buff.hex(word.split(' ')[1])
+      return Buff.join([ encodeSize(buff.length), buff ])
     } else if (word.startsWith('OP_')) {
       // If word is an opcode, return a
       // number value without size prefix.
