@@ -1,12 +1,15 @@
-import { Buff } from '@cmdcode/buff-utils'
-import { util } from '@cmdcode/crypto-utils'
+import fs       from 'fs/promises'
+import { URL }  from 'url'
+import { Script, Tx }   from '../src/index.js'
 
-import fs from 'fs/promises'
-import { Address, Signer, Tap, Tx } from "../src/index.js"
+const txtpath = new URL('./txhex.txt', import.meta.url).pathname
+const txtdata = await fs.readFile(txtpath) //.then(e => new Uint8Array(e))
 
-const tx1 = Tx.decode('01000000012312503f2491a2a97fcd775f11e108a540a5528b5d4dee7a3c68ae4add01dab300000000fdfe0000483045022100f6649b0eddfdfd4ad55426663385090d51ee86c3481bdc6b0c18ea6c0ece2c0b0220561c315b07cffa6f7dd9df96dbae9200c2dee09bf93cc35ca05e6cdf613340aa0148304502207aacee820e08b0b174e248abd8d7a34ed63b5da3abedb99934df9fddd65c05c4022100dfe87896ab5ee3df476c2655f9fbe5bd089dccbef3e4ea05b5d121169fe7f5f4014c695221031d11db38972b712a9fe1fc023577c7ae3ddb4a3004187d41c45121eecfdbb5b7210207ec36911b6ad2382860d32989c7b8728e9489d7bbc94a6b5509ef0029be128821024ea9fac06f666a4adc3fc1357b7bec1fd0bdece2b9d08579226a8ebde53058e453aeffffffff0180380100000000001976a914c9b99cddf847d10685a4fabaa0baf505f7c3dfab88ac00000000')
-console.log(tx1)
-const tx2 = Tx.encode(tx1)
-console.log(tx2.hex)
-const tx3 = Tx.decode(tx2)
-console.log(tx3)
+const scriptAsHexString = '4e21032cf515e2ae74b6d639c4e91a0b2a7047a0178e628d167989af46d1da474a6951ad21022d6b369d9a95568203b2a51eac49cc8b20ab81930e2d2565df5f0bc8e3bf59d5ac73640380ca00b268'
+
+const script = Script.decode(scriptAsHexString, true)
+
+console.log(script)
+
+//const tx1 = Tx.decode(txtdata.toString())
+//console.dir(tx1, { depth : null })
