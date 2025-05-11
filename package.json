@@ -1,6 +1,6 @@
 {
   "name": "@ordinalsbot/tapscript",
-  "version": "1.5.4-beta.2",
+  "version": "1.5.4-beta.3",
   "description": "A basic library for working with Tapscript, signatures and Bitcoin transactions.",
   "type": "module",
   "main": "./dist/main.cjs",
@@ -52,7 +52,7 @@
     "dist"
   ],
   "devDependencies": {
-    "@cmdcode/buff-utils": "^1.9.7",
+    "@cmdcode/buff-utils": "1.9.7",
     "@cmdcode/core-cmd": "^1.5.37",
     "@cmdcode/crypto-utils": "2.0.2",
     "@cmdcode/keylink": "^1.4.3",

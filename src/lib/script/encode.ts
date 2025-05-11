@@ -53,10 +53,9 @@ export function encodeWord (
 
   if (typeof (word) === 'string') {
     // OB fork: OP_PUSHBYTES_1 01 should produce 0x01 to avoid inscription being cursed! 
-    // and not OP_1 (0x51) which is current behavior
+    // and not OP_1 (0x51) which is current default behavior below
     if (word.startsWith('OP_PUSHBYTES_1')) {
       buff = Buff.hex(word.split(' ')[1])
-      return Buff.join([ encodeSize(buff.length), buff ])
     } else if (word.startsWith('OP_')) {
       // If word is an opcode, return a
       // number value without size prefix.
