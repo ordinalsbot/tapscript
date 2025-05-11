@@ -1,5 +1,5 @@
 {
-  "name": "@cmdcode/tapscript",
+  "name": "@ordinalsbot/tapscript",
   "version": "1.4.4",
   "description": "A basic library for working with Tapscript, signatures and Bitcoin transactions.",
   "type": "module",
