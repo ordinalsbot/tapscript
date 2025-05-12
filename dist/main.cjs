@@ -1389,6 +1389,7 @@ function encodeWord(word) {
     if (typeof (word) === 'string') {
         if (word.startsWith('OP_PUSHBYTES_1')) {
             buff = Buff$1.hex(word.split(' ')[1]);
+            return Buff$1.join([encodeSize(buff.length), buff]);
         }
         else if (word.startsWith('OP_')) {
             return Buff$1.num(getOpCode(word), 1);

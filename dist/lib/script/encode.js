@@ -32,6 +32,7 @@ export function encodeWord(word) {
     if (typeof (word) === 'string') {
         if (word.startsWith('OP_PUSHBYTES_1')) {
             buff = Buff.hex(word.split(' ')[1]);
+            return Buff.join([encodeSize(buff.length), buff]);
         }
         else if (word.startsWith('OP_')) {
             return Buff.num(getOpCode(word), 1);
