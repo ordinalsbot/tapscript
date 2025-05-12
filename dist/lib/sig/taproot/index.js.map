@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../src/lib/sig/taproot/index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,MAAM,EAAE,MAAQ,WAAW,CAAA;AACpC,OAAO,EAAE,MAAM,EAAE,MAAQ,WAAW,CAAA;AACpC,OAAO,EAAE,QAAQ,EAAE,MAAM,aAAa,CAAA;AAEtC,MAAM,CAAC,MAAM,QAAQ,GAAG;IACtB,IAAI,EAAK,MAAM;IACf,IAAI,EAAK,MAAM;IACf,MAAM,EAAG,QAAQ;CAClB,CAAA"}

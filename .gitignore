@@ -35,6 +35,6 @@ node_modules/
 .env*
 
 # Distributions
-dist
+# dist
 
 test/data
