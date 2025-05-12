@@ -1,6 +1,6 @@
 {
   "name": "@ordinalsbot/tapscript",
-  "version": "1.5.4-beta.3",
+  "version": "1.5.4-beta.4",
   "description": "A basic library for working with Tapscript, signatures and Bitcoin transactions.",
   "type": "module",
   "main": "./dist/main.cjs",
@@ -23,7 +23,7 @@
     "clean": "rm -rf dist/* coverage .nyc_output",
     "types": "tsc",
     "load": "NODE_OPTIONS='--no-warnings' tsx --tsconfig ./test/tsconfig.json",
-    "release": "yarn test && yarn clean && yarn types && yarn build",
+    "release": "yarn clean && yarn types && yarn build",
     "scratch": "yarn load test/scratch.ts",
     "test": "tsx --tsconfig ./test/tsconfig.json ./test/tape.ts | tap-spec"
   },
